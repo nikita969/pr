@@ -42,7 +42,7 @@ public class Pr1 {
 
         Twitter twitter = new TwitterFactory(configurationBuilder.build()).getInstance();
         Query query = new Query("Golovkin");
-
+        query.setLang("en");
         int size = 0;
         int numberOfTweets = 99999;
         long lastID = Long.MAX_VALUE;
@@ -94,13 +94,13 @@ public class Pr1 {
        .setOAuthAccessTokenSecret("kIhdacJp61DJXcK6pq1AdeTod4HfrUNoCtfBRXBKFNXVh");
 
         Twitter twitter = new TwitterFactory(configurationBuilder.build()).getInstance();
-        
         Query query=null;
         if(topic != null)
            query = new Query(topic);
          else
              query = new Query();
         int size = 0;
+        query.setLang("en");
         int numberOfTweets = 99999;
         long lastID = Long.MAX_VALUE;
         ArrayList<Status> tweets = new ArrayList<>();
@@ -117,10 +117,8 @@ public class Pr1 {
             } catch (TwitterException te) {
                 System.out.println("Couldn't connect: " + te);
             }
-
             query.setMaxId(lastID - 1);
             size += tweets.size();
-
             for (int i = 0; i < tweets.size(); i++) {
                 Status t = (Status) tweets.get(i);
                 System.out.println(t.getText());
