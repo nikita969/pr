@@ -229,9 +229,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Http"/>
               </Properties>
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Http"/>
-              </AccessibilityProperties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
               </Events>
@@ -702,9 +699,6 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Topic:"/>
                   </Properties>
-                  <AccessibilityProperties>
-                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Topic:"/>
-                  </AccessibilityProperties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="genderBox">
                   <Properties>

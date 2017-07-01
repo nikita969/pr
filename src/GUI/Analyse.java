@@ -5,11 +5,21 @@
  */
 package GUI;
 
+
+
+
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JProgressBar;
 import pr1.FrameRunnable;
 import static pr1.MongoDB.generateGraphs;
 import static pr1.MongoDB.requestByTopic;
+
+//import pr1.ProgressBarExample;
+//import static pr1.ProgressBarExample.funcc;
+
 
 /**
  *
@@ -17,17 +27,15 @@ import static pr1.MongoDB.requestByTopic;
  */
 public class Analyse extends javax.swing.JFrame {
      private Thread t;
-    /**
-     * Creates new form Analyse
-     */
+     JProgressBar jb;
+    
     public Analyse() {
         initComponents();
        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 16));
        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 16));
        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 16));
        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 20));
-       jButton1.setFont(new java.awt.Font("Century Gothic", 0, 16));
-       //jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
+       jButton1.setFont(new java.awt.Font("Century Gothic", 0, 16));  
     }
 
     /**
@@ -198,45 +206,20 @@ public class Analyse extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         NewJFrame frame=null;
-        Date date = new Date();
-        
-        requestByTopic(jTextField1.getText(),date);
-        int []neg=  generateGraphs("neg",date,jTextField1.getText());
-        int []pos=generateGraphs("pos",date,jTextField1.getText());
-        new NewJFrame(pos,neg,jTextField1.getText(),date).setVisible(true);
-       // t=new FrameRunnable(neg,pos,jTextField1.getText(),date,frame);
-        //t2=new Loadbar(progress);
-       // t.start(); //t2.start();        // TODO add your handling code here:
+        Date date = new Date();  
+
+       
+       requestByTopic(jTextField1.getText(),date);
+       int []neg = generateGraphs("neg",date,jTextField1.getText());
+       int []pos = generateGraphs("pos",date,jTextField1.getText());
+       new NewJFrame(pos,neg,jTextField1.getText(),date).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Analyse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Analyse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Analyse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Analyse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Analyse().setVisible(true);

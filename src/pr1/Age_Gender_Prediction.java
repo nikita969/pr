@@ -31,7 +31,7 @@ public class Age_Gender_Prediction {
     static int arr[];
     final static double ageIntercept=23.2188;
     
-    public static void loadGender() throws FileNotFoundException, IOException{
+   public static void loadGender() throws FileNotFoundException, IOException{
      Scanner scanner = new Scanner(new File(str1));
        scanner.useDelimiter(",");
         scanner.nextLine();

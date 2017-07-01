@@ -8,7 +8,7 @@ package pr1;
 import GUI.NewJFrame;
 import java.util.Date;
 import javax.swing.JFrame;
-import static GUI.Analysis.flag;
+
 /**
  *
  * @author nikitaivancov
@@ -32,7 +32,7 @@ public class FrameRunnable extends Thread {
     @Override
     public void run() {
       new NewJFrame(pos,neg,topic,date).setVisible(true); 
-      flag=true;
+    
     }
     
 }

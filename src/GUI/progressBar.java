@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pr1;
+package GUI;
 
 /**
  *
  * @author nikitaivancov
  */
-class Jframe {
-    
+public class progressBar {
+    public static void main(String[] args){
+        
+        ProgressBarDemo obj_frame=new ProgressBarDemo();
+        obj_frame.setVisible(true);
+    }
 }

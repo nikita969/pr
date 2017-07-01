@@ -61,8 +61,7 @@ public class NewJFrame extends javax.swing.JFrame {
         int[] arr=new int[7];
         for(int i=0;i<7;i++)
             arr[i]=pos[i]+neg[i];
-        
-        
+       
           tTopic.setText(topic);
           topic2.setText(topic);
           topic3.setText(topic);
@@ -73,29 +72,17 @@ public class NewJFrame extends javax.swing.JFrame {
           setPieChart(posPiechart,pos, c2);
           setAgeGraph(posAge,pos,c2);
           Color c3 = new  Color(151,9,97);
-          setPieChart(negPiechart,neg, c3);
-          setAgeGraph(negAge,neg,c3);
+          setPieChart(negPiechart,neg, c2);
+          setAgeGraph(negAge,neg,c2);
+          
           specTopic.setText(topic);
           List<String> posUsers=new ArrayList<String>();
           List<String> negUsers=new ArrayList<String>();
           createUsersLists(topic,date,posUsers,negUsers);
           
-          
-          
-          //usersTable.setOpaque(true);
-          //usersTable.setFillsViewportHeight(true);
-         /* JTableHeader th = usersTable.getTableHeader();
-          TableColumnModel tcm=th.getColumnModel();
-          TableColumn tc=tcm.getColumn(0);
-          tcm.set  */
-          
           JTableHeader h= usersTable.getTableHeader();
           h.setOpaque(true);
           h.setBackground(Color.red);
-          //h.setForeground(Color.yellow);
-        
-         // usersTable.setBackground(Color.yellow);
-         // ((DefaultTableCellRenderer) h.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
           
           Object u[] = new Object [1]; 
           DefaultTableModel model=(DefaultTableModel)usersTable.getModel();
@@ -115,10 +102,15 @@ public class NewJFrame extends javax.swing.JFrame {
              for(int i=0;i<negUsers.size();i++){
              u[0]=negUsers.get(i);
              model.addRow(u);} 
-             int ar[]= specRequest(this.topic,this.topic,"",this.date,"",null,null);
-             //Color spec = new Color(0,163,32);
-             setSpecPieChart(ar,specPie,new Color(0,163,32));
-        
+             
+             //int ar[]= specRequest(this.topic,this.topic,"",this.date,"",null,null);
+             Color spec = new Color(0,163,32);
+             int []a= new int[4];
+             a[0]=pos[0];
+             a[1]=neg[0];
+             a[2]=0;
+             a[3]=0;
+            setSpecPieChart(a,specPie,new Color(0,163,32));
     }
 
     /**
@@ -682,6 +674,7 @@ public class NewJFrame extends javax.swing.JFrame {
         String subtopic=subtopicField.getText();
         Date from=sinceDate.getDate();
         Date to=untilDate.getDate();
+        new ProgressBarDemo();
         int arr[]= specRequest(topic,subtopic,group,this.date,gender,from,to);
         setSpecPieChart(arr,specPie,new Color(0,163,32));
         
@@ -693,37 +686,7 @@ public class NewJFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-              //  new NewJFrame().setVisible(true);
-            }
-        });
-    }
 
     
      void setPieChart(JPanel panel,int[]arr,Color color)
